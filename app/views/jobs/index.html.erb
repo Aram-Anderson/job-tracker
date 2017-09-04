@@ -1,0 +1,15 @@
+<% if @company %>
+  All Jobs for <strong><%= @company.name %></strong>
+<% end %>
+<div class="row">
+<% @jobs.each do |job| %>
+  <ul class="col s4" >
+    <div class="jobs_<%= job.id %>">
+    <li><%= job.title %> at <%= link_to job.company.name, company_path(job.company) %></li>
+    <li>City: <%= job.city %></li>
+    <li>Level of Interest: <%= job.level_of_interest %></li>
+    <li><%= link_to "Edit", edit_job_path(job) %></li>
+    <li><%= link_to "Delete", job_path(job), method: "delete" %></li>
+  </div>
+  </ul>
+<% end %>

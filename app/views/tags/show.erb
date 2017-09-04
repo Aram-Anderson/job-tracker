@@ -1,0 +1,8 @@
+<h1>This Tag</h1>
+<%= @tag.name %>
+<p>Jobs associated with this tag: </p>
+<% @tag.jobs.each do |job| %>
+<ul>
+  <li><%= link_to job.title, job_path(job) %> at <%= link_to job.company.name, company_path(job.company) %></li>
+</ul>
+<% end %>

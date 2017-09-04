@@ -1,0 +1,11 @@
+<h1>All Tags</h1>
+<div class="row">
+<% @tags.each do |tag| %>
+<ul class="col s3">
+  <li>Tag: <%= link_to tag.name.capitalize, tag_path(tag) %></li>
+  <li><%= link_to "Delete", tag_path(tag), method: 'delete' %></li>
+  <li><%= link_to "Edit", edit_tag_path(tag) %></li>
+</ul>
+<% end %>
+
+<span class="btn-floating btn-large waves-effect waves-light blue darken-4"><%= link_to "New", new_tag_path %></span>

@@ -1,0 +1,31 @@
+<h1>Dashboard</h1>
+<h3>Jobs by Level of Interest:</h3>
+<div class="row">
+
+<% @jobs.sort_by_interest.each do |job| %>
+  <ul class="col s2">
+<li>Level of Interest: <%= job[0] %></li>
+<li>Count of Jobs: <%= job[1] %></li><br>
+</ul>
+<% end %>
+
+</div>
+<h3>Top Three Companies By Level of Interest:</h3>
+<div class="row">
+  <% @companies.average_level_of_interest.each do |company| %>
+  <ul class="col s4">
+  <li>Company: <%= company[0] %></li>
+  <li>Average Level of Interest: <%= company[1] %></li><br>
+  </ul>
+  <% end %>
+</div>
+<h3>Jobs By Location:</h3>
+<div class="row">
+  <% @jobs.by_city.each do |job| %>
+  <ul class="col s4">
+  <li>City: <%= job[0] %></li>
+  <li>Count of Jobs: <%= job[1] %></li>
+  <li>See All Jobs In <%= link_to job[0], "/jobs?location=#{job[0]}" %></li>
+  </ul>
+  <% end %>
+</div>
