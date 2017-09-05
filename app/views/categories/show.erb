@@ -1,0 +1,10 @@
+<h1>This Category</h1>
+
+<h2><%= @category.name %></h2>
+<h3>Jobs In This Category:</h3>
+<ul>
+<% @category.jobs.each do |job| %>
+<li>Title: <%= link_to job.title, company_job_path(job.company, job) %></li>
+<li>Company: <%= link_to job.company.name, company_path(job.company) %></li><br>
+<% end %>
+</ul>

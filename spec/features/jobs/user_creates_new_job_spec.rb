@@ -3,12 +3,15 @@ require 'rails_helper'
 describe "User creates a new job" do
   scenario "a user can create a new job" do
     company = Company.create!(name: "ESPN")
+    category = Category.create!(name: "Software")
+    Tag.create!(name: Faker::Hacker.ingverb)
     visit new_company_job_path(company)
 
     fill_in "job[title]", with: "Developer"
     fill_in "job[description]", with: "So fun!"
     fill_in "job[level_of_interest]", with: 80
     fill_in "job[city]", with: "Denver"
+    select category.name, from: "job[category_id]"
 
     click_button "Create"
 

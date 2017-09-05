@@ -6,11 +6,30 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<main>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
 <%= yield %>
 
-</body>
+</main>
+<footer class="page-footer blue darken-4">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Job Tracker</h5>
+        <p class="grey-text text-lighten-4">An app to help you keep track of job leads.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Navigation</h5>
+        <ul>
+          <li><%= link_to "All the Jobs", jobs_path %></li>
+          <li><%= link_to "Stats Dashboard", dashboard_index_path %></li>
+          <li><%= link_to "All the Contacts", contacts_path %></li>
+          <li><%= link_to "Home", root_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>

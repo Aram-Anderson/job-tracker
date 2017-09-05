@@ -10,4 +10,18 @@ Level of Interest: <%= @job.level_of_interest %>
 City: <%= @job.city %>
 <br>
 
-Company: <%= link_to @job.company.name, company_path(@job.company) %>
+Category: <%= @job.category.name %><br>
+
+Company: <%= link_to @job.company.name, company_path(@job.company) %><br>
+Tags: <% @job.tags.each do |tag| %>
+<ul>
+<li><%= link_to tag.name, tag_path(tag) %></li>
+</ul>
+<% end %>
+<p><%= link_to "Create a New Tag", new_tag_path %></p>
+
+<br><br><%= link_to "Edit Job", edit_job_path(@job) %>
+<br><%= link_to "Delete Job", job_path(@job) %>
+<h5>Comments: (<%= @job.comments.size %>)</h5>
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+<%= render partial: 'comments/form' %>

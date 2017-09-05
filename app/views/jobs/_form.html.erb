@@ -1,15 +1,29 @@
 <%= form_for [@company, @job] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+<%= f.label :category %>
+<%= f.collection_select :category_id, Category.all, :id, :name %>
 
-  <%= f.label :level_of_interest %>
-  <%= f.number_field :level_of_interest %>
+<%= f.label :title %>
+<%= f.text_field :title %>
 
-  <%= f.label :city %>
-  <%= f.text_field :city %>
+<%= f.label :description %>
+<%= f.text_field :description %>
 
-  <%= f.submit %>
+<%= f.label :level_of_interest %>
+<%= f.number_field :level_of_interest %>
+
+<%= f.label :city %>
+<%= f.text_field :city %>
+
+<div class="row">
+  <%= hidden_field_tag 'job[tag_ids][]', nil %>
+  <% @tags.each do |tag| %>
+  <div class="col s2">
+    <%= check_box_tag('job[tag_ids][]', tag.id, @job.tag_ids.include?(tag.id), id: "tag-#{tag.id}") %>
+    <label for=<%= "tag-#{tag.id}" %>><%= tag.name %></label>
+  </div>
+  <% end %>
+</div>
+
+<%= f.submit %>
 <% end %>

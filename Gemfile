@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'faker'
+gem 'ui_faces'
+gem 'materialize-sass'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -40,6 +43,14 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
+  gem 'launchy'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'pry'
+  gem 'factory_girl_rails'
+  gem 'rspec-pride'
+  gem "nyan-cat-formatter"
+  gem 'jquery-rails'
 end
 
 group :development do

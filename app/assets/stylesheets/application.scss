@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+@import "materialize";
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:link {
+  color: #333333;
+}
+a:visited {
+  color: slategrey;
+}
+a:hover {
+  color: #CCCCCC;
+}
+a:active {
+  color: #333333;
+}

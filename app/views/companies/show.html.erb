@@ -1,5 +1,15 @@
-All Jobs for <strong><%= @company.name %></strong>
-
+<h4>All Jobs for <strong><%= @company.name %></strong></h4>
+  <ul>
 <% @company.jobs.each do |job| %>
-  <ul><%= job.title %></ul>
+<div class="jobs_<%= job.id %>">
+<h5><li><%= link_to job.title, job_path(job) %></li></h5>
+<li><%= link_to "Delete", job_path(job), method: "delete" %></li>
+<li><%= link_to "Edit", edit_job_path(job) %></li><br>
 <% end %>
+</ul>
+<span class="waves-effect waves-light btn orange"><%= button_to "Edit This Company", edit_company_path(@company), method: "get" %></span>
+<span class="waves-effect waves-light btn red"><%= button_to "Delete This Company", company_path(@company), method: "delete"  %></span>
+
+<h4>Company Contacts:</h4>
+<%= render partial: 'companies/contact', collection: @company.contacts %>
+<%= render partial: 'contacts/form' %>
