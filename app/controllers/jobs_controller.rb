@@ -18,6 +18,7 @@ class JobsController < ApplicationController
     @company = Company.find(params[:company_id])
     @job = Job.new()
     @categories = Category.all
+    @tags = Tag.all
   end
 
   def create
@@ -31,12 +32,6 @@ class JobsController < ApplicationController
       flash[:failure] = "A field was not filled out"
       render :new
     end
-  end
-
-  def show
-    @job = Job.find(params[:id])
-    @comment = Comment.new
-    @comment.job_id = @job.id
   end
 
   def edit
@@ -67,6 +62,12 @@ class JobsController < ApplicationController
     flash[:success] = "#{@job.title} at #{@company.name} was successfully deleted!"
 
     redirect_to company_path(@company)
+  end
+
+  def show
+    @job = Job.find(params[:id])
+    @comment = Comment.new
+    @comment.job_id = @job.id
   end
 
   private

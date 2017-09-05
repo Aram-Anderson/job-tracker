@@ -7,6 +7,12 @@ class CommentsController < ApplicationController
     redirect_to company_job_path(@comment.job.company_id, @comment.job_id)
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to job_path(@comment.job)
+  end
+
   private
 
   def comment_params
